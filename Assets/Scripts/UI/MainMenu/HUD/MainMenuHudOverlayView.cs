@@ -3,6 +3,7 @@
 using TMPro;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SpaceSimulation.UI.MainMenu.HUD
 {
@@ -17,6 +18,7 @@ namespace SpaceSimulation.UI.MainMenu.HUD
 		{
 			_model = model;
 			_model.OnInitView(this);
+			StartGame.onClick.AddListener(_model.OnStartGamePressed);
 		}
 
 		[Header("HedaerText")]
@@ -26,5 +28,9 @@ namespace SpaceSimulation.UI.MainMenu.HUD
 		{
 			HedaerText.text = s;
 		}
+
+		[Header("StartGame Button")]
+		[SerializeField]
+		private Button StartGame;
 	}
 }

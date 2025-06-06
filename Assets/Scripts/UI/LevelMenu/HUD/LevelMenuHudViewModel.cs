@@ -79,7 +79,7 @@ namespace SpaceSimulation.UI.LevelMenu.HUD
 
 		private void SetScore()
 		{
-			_myView.SetScoreText($"Score: {_levelScoreControl.CurrScore.DigitToString()}");
+		//	_myView.SetScoreText($"Score: {_levelScoreControl.CurrScore.DigitToString()}");
 		}
 	}
 }

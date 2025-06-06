@@ -86,7 +86,7 @@ namespace SpaceSimulation.Core.GameLoop
 			{
 				return;
 			}
-			_gameLoopList.ForEach(x => x.Update());
+			_gameLoopList.ForEach(x => x.LoopUpdate());
 		}
 
 

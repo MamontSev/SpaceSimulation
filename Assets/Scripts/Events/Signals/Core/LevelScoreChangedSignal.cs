@@ -1,13 +1,17 @@
-﻿using UnityEngine;
+﻿using SpaceSimulation.Core.Fraction;
+
+using UnityEngine;
 
 namespace SpaceSimulation.Events.Signals
 {
 	public class LevelScoreChangedSignal:IEventBusSignal
 	{
-		public readonly float Value;
-		public LevelScoreChangedSignal( float value )
+		public readonly FractionType FractionType;
+		public readonly float NewAmount;
+		public LevelScoreChangedSignal( FractionType fractionType, float newAmount )
 		{
-			this.Value = value;
+			this.FractionType = fractionType;
+			this.NewAmount = newAmount;
 		}
 	}
 }

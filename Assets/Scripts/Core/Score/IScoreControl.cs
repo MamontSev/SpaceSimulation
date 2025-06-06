@@ -1,12 +1,10 @@
-﻿namespace SpaceSimulation.Core.Score
+﻿using SpaceSimulation.Core.Fraction;
+
+namespace SpaceSimulation.Core.Score
 {
 	public interface IScoreControl
 	{
-		float CurrScore
-		{
-			get;
-		}
-
-		void AddScore( float amount );
+		void AddScore( FractionType type , float amount );
+		float GetAmount( FractionType type );
 	}
 }

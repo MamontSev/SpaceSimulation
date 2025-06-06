@@ -2,6 +2,6 @@
 {
 	public interface IGameLoopUpdate
 	{
-		void Update();
+		void LoopUpdate();
 	}
 }

@@ -1,4 +1,6 @@
-﻿using SpaceSimulation.Events;
+﻿using SpaceSimulation.Data.GamePrefs;
+using SpaceSimulation.Data.RewardResource;
+using SpaceSimulation.Events;
 using SpaceSimulation.GeneralStateMashine;
 using SpaceSimulation.Log;
 using SpaceSimulation.SceneControl;
@@ -19,6 +21,8 @@ namespace SpaceSimulation.Installer
 			BindGeneralGameStateMachine();
 			BindBusService();
 			BindLogService();
+			BindRewardResourceConfig();
+			BindGamePrefsConfig();
 		}
 
 		[SerializeField]
@@ -59,6 +63,30 @@ namespace SpaceSimulation.Installer
 		private void BindLogService()
 		{
 			Container.Bind<ILogService>().To<LogService>().AsSingle().NonLazy();
+		}
+
+		[SerializeField]
+		private RewardResourcePreset _rewardResourcePreset;
+		private void BindRewardResourceConfig()
+		{
+			Container
+				.Bind<IRewardResourceConfig>()
+				.To<RewardResourceConfig>()
+				.AsSingle()
+				.WithArguments(_rewardResourcePreset)
+				.NonLazy();
+		}
+
+		[SerializeField]
+		private GamePrefsPreset _gamePrefsPreset;
+		private void BindGamePrefsConfig()
+		{
+			Container
+				.Bind<IGamePrefsConfig>()
+				.To<GamePrefsConfig>()
+				.AsSingle()
+				.WithArguments(_gamePrefsPreset)
+				.NonLazy();
 		}
 	}
 }
