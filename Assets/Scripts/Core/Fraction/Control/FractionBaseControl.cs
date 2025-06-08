@@ -29,7 +29,7 @@ namespace SpaceSimulation.Core.Fraction.Control
 
 		private readonly Dictionary<FractionType , FractionBase> _baseDict = new();
 
-		public Transform FractionTransform( FractionType type ) => _baseDict[type].transform;
+		public Transform GetFractionBaseTransform( FractionType type ) => _baseDict[type].GoTargetTransform;
 
 		public void HandOverResources( FractionType type , float amount )
 		{

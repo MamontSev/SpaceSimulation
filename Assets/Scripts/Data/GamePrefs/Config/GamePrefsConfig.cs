@@ -11,7 +11,7 @@ namespace SpaceSimulation.Data.GamePrefs
 			ValidateData();
 		}
 
-		public (float min, float max) DroneCount => (_data.MinDroneCount, _data.MaxDroneCount);
+		public ( int,  int) DroneCount => (_data.MinDroneCount, _data.MaxDroneCount);
 		public (float min, float max) DroneSpeed => (_data.MinDroneSpeed, _data.MaxDroneSpeed);
 		public float FrequencyCreateRewardResource => _data.FrequencyCreateRewardResource;
 

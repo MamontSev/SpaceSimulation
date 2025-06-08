@@ -18,6 +18,11 @@ namespace SpaceSimulation.Core.RewardResource.Item
 		private float _extractDuration = 2.0f;
 		public float ExtractDuration => _extractDuration;
 
+		[SerializeField]
+		private float _extructResourceAmount = 1.0f;
+		public float ExtructResourceAmount => _extructResourceAmount;
+		
+
 		private State _currState = State.Disabled;
 		private enum State
 		{
@@ -38,9 +43,14 @@ namespace SpaceSimulation.Core.RewardResource.Item
 
 		public void FinishExtruct()
 		{
-
+			_currState = State.Disabled;
+			_rewardResourceControl.OnExtructableItemDestroyed(this);
 		}
 
 		public bool MayExtruct => _currState == State.AwaitExstruct;
+
+		public Vector3 Position => transform.position;
+
+		
 	}
 }

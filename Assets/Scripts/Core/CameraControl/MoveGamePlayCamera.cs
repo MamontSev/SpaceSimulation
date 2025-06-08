@@ -3,6 +3,7 @@
 using SpaceSimulation.Core.GameLoop;
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 using Zenject;
 
@@ -10,9 +11,9 @@ namespace SpaceSimulation.Core.CameraControl
 {
 	public class MoveGamePlayCamera:MonoBehaviour, IGameLoopUpdate
 	{
-		private IGameLoopControl _gameLoopControl;
+		private IGameLoopService _gameLoopControl;
 		[Inject]
-		private void Construct( IGameLoopControl _gameLoopControl )
+		private void Construct( IGameLoopService _gameLoopControl )
 		{
 			_gameLoopControl.Register(this);
 		}
@@ -32,8 +33,8 @@ namespace SpaceSimulation.Core.CameraControl
 		{
 			CheckMousePressed();
 
-			float xAxisValue = Input.GetAxis("Horizontal")/3.0f;
-			float zAxisValue = Input.GetAxis("Vertical")/3.0f;
+			float xAxisValue = Input.GetAxis("Horizontal")/6.0f;
+			float zAxisValue = Input.GetAxis("Vertical")/6.0f;
 			CameraTransform.Translate(new Vector3(xAxisValue , 0.0f , zAxisValue));
 
 			if( _mousePressed )
@@ -57,7 +58,10 @@ namespace SpaceSimulation.Core.CameraControl
 		{
 			if( Input.GetMouseButtonDown(0) )
 			{
-				_mousePressed = true;
+				if( EventSystem.current.IsPointerOverGameObject() == false )
+				{
+					_mousePressed = true;
+				}
 			}
 			if( Input.GetMouseButtonUp(0) )
 			{

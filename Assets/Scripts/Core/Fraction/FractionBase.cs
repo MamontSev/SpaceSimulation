@@ -8,10 +8,14 @@ namespace SpaceSimulation.Core.Fraction
 	{
 		private Tween _takeResAnim;
 
+		[SerializeField]
+		private Transform _goTargetTransform;
+		public Transform GoTargetTransform => _goTargetTransform;
+
 		private void Awake()
 		{
 			_takeResAnim = transform
-			.DOPunchPosition(Vector3.forward * 0.3f , 0.5f)
+			.DOPunchPosition(Vector3.up * 0.8f , 0.5f)
 			.SetAutoKill(false);
 		}
 

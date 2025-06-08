@@ -2,7 +2,7 @@
 {
 	public enum FractionType
 	{
-		Red,
-		Blue
+		Red = 0,
+		Blue = 1
 	}
 }

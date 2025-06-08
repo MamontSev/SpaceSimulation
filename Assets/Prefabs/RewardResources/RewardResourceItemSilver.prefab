@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _extractDuration: 2
+  _extructResourceAmount: 2
 --- !u!208 &8844325663212501204
 NavMeshObstacle:
   m_ObjectHideFlags: 0

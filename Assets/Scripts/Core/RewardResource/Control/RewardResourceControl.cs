@@ -1,54 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using SpaceSimulation.Core.GameLoop;
+using SpaceSimulation.Core.GamePrefs;
 using SpaceSimulation.Core.RewardResource.Factory;
 using SpaceSimulation.Core.RewardResource.Item;
 using SpaceSimulation.Core.Spawn;
-using SpaceSimulation.Data.GamePrefs;
 using SpaceSimulation.Events;
 using SpaceSimulation.Events.Signals;
 
 using UnityEngine;
-using UnityEngine.AI;
-
-using Zenject;
 
 namespace SpaceSimulation.Core.RewardResource.Control
 {
-	public interface IRewardResourceControl:IGameLoopUpdate, ILateDisposable
-	{
-		List<IExtructableItem> ExtructableItemsList
-		{
-			get;
-		}
-
-		void OnExtructableItemDestroyed( RewardResourceItem item );
-	}
 	public class RewardResourceControl:IRewardResourceControl
 	{
 		private readonly IRewardResourceFactory _rewardResourceFactory;
-		private readonly IEventBusService _eventBusService;
-		private readonly IGameLoopControl _gameLoopControl;
-		private readonly IGamePrefsConfig _gamePrefsConfig;
-		private readonly ISpawnPointFinder _spawnPointFinder; 
+		private readonly IGameLoopService _gameLoopControl;
+		private readonly ISpawnPointFinder _spawnPointFinder;
+		private readonly IGamePrefsService _gamePrefsService;
 		public RewardResourceControl
 		(
 			IRewardResourceFactory _rewardResourceFactory,
-			IEventBusService _eventBusService,
-			IGameLoopControl _gameLoopControl,
-			IGamePrefsConfig _gamePrefsConfig,
-			ISpawnPointFinder _spawnPointFinder
+			IGameLoopService _gameLoopControl,
+			ISpawnPointFinder _spawnPointFinder	,
+			IGamePrefsService _gamePrefsService
 		)
         {
 			this._rewardResourceFactory = _rewardResourceFactory;
-			this._eventBusService = _eventBusService;
 			this._gameLoopControl = _gameLoopControl;
-			this._gamePrefsConfig = _gamePrefsConfig;
 			this._spawnPointFinder = _spawnPointFinder;
+			this._gamePrefsService = _gamePrefsService;
 			RegisterGameLoop();
-			InitFrequency();
-			Subscribe();
 		}
 
 		private List<IExtructableItem> _extructableItemsList = new();
@@ -62,7 +44,7 @@ namespace SpaceSimulation.Core.RewardResource.Control
 
 
 		private float _timeLastCreate = 0.0f;
-		private float TimeNextCreate => _timeLastCreate + _frequency;
+		private float TimeNextCreate => _timeLastCreate + _gamePrefsService.FrequencyCreateRewardResource;
 		private void CreateRewardResourceItem()
 		{
 			_timeLastCreate = Time.time;
@@ -78,39 +60,13 @@ namespace SpaceSimulation.Core.RewardResource.Control
 			CreateRewardResourceItem();
 		}
 
-		private float _frequency;
-		private void InitFrequency()
-		{
-			_frequency = _gamePrefsConfig.FrequencyCreateRewardResource;
-		}
-		private void OnFrequencyCreateRewardResourceSignal( FrequencyCreateRewardResourceSignal signal )
-		{
-			_frequency = signal.Frequency;
-		}
-
 		private void RegisterGameLoop()
 		{
 			_gameLoopControl.Register(this);
 		}
-		private void OnLevelInitCompletedSignal( LevelInitCompletedSignal signal )
+		public void Init()
 		{
 			CreateRewardResourceItem();
-		}
-
-
-		
-
-
-		private void Subscribe()
-		{
-			_eventBusService.Subscribe<FrequencyCreateRewardResourceSignal>(OnFrequencyCreateRewardResourceSignal);
-			_eventBusService.Subscribe<LevelInitCompletedSignal>(OnLevelInitCompletedSignal);
-		}
-
-		public void LateDispose()
-		{
-			_eventBusService.Unsubscribe<FrequencyCreateRewardResourceSignal>(OnFrequencyCreateRewardResourceSignal);
-			_eventBusService.Unsubscribe<LevelInitCompletedSignal>(OnLevelInitCompletedSignal);
 		}
 	}
 }

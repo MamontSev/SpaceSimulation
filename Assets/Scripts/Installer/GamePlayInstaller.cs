@@ -1,12 +1,16 @@
 ﻿using SpaceSimulation.Core.CameraControl;
+using SpaceSimulation.Core.Drone.Control;
+using SpaceSimulation.Core.Drone.Factory;
 using SpaceSimulation.Core.Fraction.Control;
 using SpaceSimulation.Core.GameLoop;
+using SpaceSimulation.Core.GamePrefs;
 using SpaceSimulation.Core.RewardResource.Control;
 using SpaceSimulation.Core.RewardResource.Factory;
 using SpaceSimulation.Core.Score;
 using SpaceSimulation.Core.Spawn;
 using SpaceSimulation.UI.LevelMenu.HUD;
-using SpaceSimulation.UI.LevelMenu.PopUp;
+
+using UnityEngine;
 
 using Zenject;
 
@@ -18,13 +22,16 @@ namespace SpaceSimulation.Installer
 		{
 			BindLevelScoreControl();
 			BindLevelStateControl();
-			BindLevelMenuPopUpFacrtory();
 			BindLevelMenuHudFactory();
 			BindRewardResourceFactory();
 			BindRewardResourceControl();
 			BindSpawnPointFinder();
 			BindFractionBaseControl();
 			BindMoveGamePlayCamera();
+			BindToCameraRotation();
+			BindGamePrefsService();
+			BindDroneFactory();
+			BindDroneControl();
 		}
 
 
@@ -32,18 +39,11 @@ namespace SpaceSimulation.Installer
 		{
 			Container.Bind<IScoreControl>().To<ScoreControl>().AsSingle().NonLazy();
 		}
-		
 		private void BindLevelStateControl()
 		{
-			Container.BindInterfacesAndSelfTo<GameLoopControl>().AsSingle().NonLazy();
-		}
-		
-
-		private void BindLevelMenuPopUpFacrtory()
-		{
 			Container
-			.Bind<ILevelMenuPopUpFacrtory>()
-			.To<LevelMenuPopUpFacrtory>()
+			.Bind<IGameLoopService>()
+			.To<GameLoopService>()
 			.FromComponentInHierarchy()
 			.AsSingle()
 			.NonLazy();
@@ -106,8 +106,47 @@ namespace SpaceSimulation.Installer
 			.AsSingle()
 			.NonLazy();
 		}
+		private void BindToCameraRotation()
+		{
+			Container
+			.Bind<ToCameraRotation>()
+			.FromComponentInHierarchy()
+			.AsSingle()
+			.NonLazy();
+		}
 
-		
+
+
+		private void BindGamePrefsService()
+		{
+			Container
+			.BindInterfacesAndSelfTo<GamePrefsService>()
+			.AsSingle()
+			.NonLazy();
+		}
+
+		private void BindDroneFactory()
+		{
+			Container
+			.Bind<IDroneFactory>()
+			.To<DroneFactory>()
+			.FromComponentInHierarchy()
+			.AsSingle()
+			.NonLazy();
+		}
+
+		private void BindDroneControl()
+		{
+			Container.Bind<IDroneControl>().To<DroneControl>().AsSingle().NonLazy();
+
+
+		}
+
+
+
+
+
+
 
 
 

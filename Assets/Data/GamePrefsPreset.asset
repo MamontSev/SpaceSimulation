@@ -16,4 +16,4 @@ MonoBehaviour:
   _maxDroneCount: 5
   _minDroneSpeed: 1
   _maxDroneSpeed: 10
-  _frequencyCreateRewardResource: 0.1
+  _frequencyCreateRewardResource: 5

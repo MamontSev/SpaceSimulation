@@ -2,7 +2,7 @@
 {
 	public interface IGamePrefsConfig
 	{
-		(float min, float max) DroneCount
+		(int min, int max) DroneCount
 		{
 			get;
 		}

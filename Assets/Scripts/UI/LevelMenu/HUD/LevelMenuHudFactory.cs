@@ -1,5 +1,6 @@
 ﻿using SpaceSimulation.Events;
 using SpaceSimulation.Events.Signals;
+using SpaceSimulation.UI.LevelMenu.HUD.LevelHud;
 
 using UnityEngine;
 
@@ -10,7 +11,6 @@ namespace SpaceSimulation.UI.LevelMenu.HUD
 	public class LevelMenuHudFactory:MonoBehaviour 
 	{
 		private DiContainer _diContainer;
-		private IEventBusService _eventBusService;
 		[Inject]
 		private void Construct
 		(
@@ -19,14 +19,11 @@ namespace SpaceSimulation.UI.LevelMenu.HUD
 		)
 		{
 			this._diContainer = _diContainer;
-			this._eventBusService = _eventBusService;
-			_eventBusService.Subscribe<LevelInitCompletedSignal>(OnLevelStart);
 		}
 
-		private void OnLevelStart( LevelInitCompletedSignal signal )
+		public void Init( )
 		{
 			InitHud();
-			_eventBusService.Unsubscribe<LevelInitCompletedSignal>(OnLevelStart);
 		}
 
 

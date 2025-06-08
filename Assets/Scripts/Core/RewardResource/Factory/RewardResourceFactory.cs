@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 
 using SpaceSimulation.Core.RewardResource.Item;
 using SpaceSimulation.Data.RewardResource;
@@ -29,7 +28,7 @@ namespace SpaceSimulation.Core.RewardResource.Factory
 		[SerializeField]
 		private Transform ItemParent;
 
-		private readonly List<RewardResourceItem> _pool = new();
+		private readonly  List<RewardResourceItem> _pool = new();
 
 		public void Init()
 		{
@@ -43,6 +42,7 @@ namespace SpaceSimulation.Core.RewardResource.Factory
 
 		public RewardResourceItem Get()
 		{
+			
 			RewardResourceItem item;
 			if( _pool.Count == 0 )
 			{
@@ -53,10 +53,10 @@ namespace SpaceSimulation.Core.RewardResource.Factory
 			{
 				int rand = UnityEngine.Random.Range(0 , _pool.Count);
 				item = _pool[rand];
+				_pool.Remove(item);
 			}
 			item.gameObject.SetActive(true);
 			item.Init();
-			_pool.Remove(item);
 			return item;
 		}
 
@@ -69,7 +69,7 @@ namespace SpaceSimulation.Core.RewardResource.Factory
 
 		private RewardResourceItem InstantiateItem( RewardResourceType type )
 		{
-			return _diContainer.InstantiatePrefabForComponent<RewardResourceItem>(_resourceConfig.GetPrefab(type) , ItemParent);
+			return _diContainer.InstantiatePrefabForComponent<RewardResourceItem>(_resourceConfig.GetPrefab(type).gameObject , ItemParent);
 		}
 
 	}

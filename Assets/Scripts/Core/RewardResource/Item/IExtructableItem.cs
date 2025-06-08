@@ -1,4 +1,6 @@
-﻿namespace SpaceSimulation.Core.RewardResource.Item
+﻿using UnityEngine;
+
+namespace SpaceSimulation.Core.RewardResource.Item
 {
 	public interface IExtructableItem
 	{
@@ -6,10 +8,20 @@
 		{
 			get;
 		}
+		float ExtructResourceAmount
+		{
+			get;
+		}
 		bool MayExtruct
 		{
 			get;
 		}
+
+		Vector3 Position
+		{
+			get;
+		}
+
 
 		void FinishExtruct();
 		void StartExtruct();

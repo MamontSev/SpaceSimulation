@@ -97,7 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b1644416471f24184063c20f5b117a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _extractDuration: 2
+  _extractDuration: 3
+  _extructResourceAmount: 3
 --- !u!208 &8428272832591972916
 NavMeshObstacle:
   m_ObjectHideFlags: 0
