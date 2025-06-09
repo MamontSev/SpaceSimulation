@@ -18,6 +18,8 @@ namespace SpaceSimulation.Core.Drone.Factory
 		private void Construct( DiContainer _diContainer )
 		{
 			this._diContainer = _diContainer;
+
+			
 			InitPrefabDict();
 			InitPoolDict();
 		}
@@ -43,7 +45,7 @@ namespace SpaceSimulation.Core.Drone.Factory
 		{
 			foreach( FractionType fractionType in Enum.GetValues(typeof(FractionType)) )
 			{
-				_pool.Add(fractionType,new());
+				_pool.Add(fractionType , new());
 			}
 		}
 
@@ -75,8 +77,8 @@ namespace SpaceSimulation.Core.Drone.Factory
 			DroneItem item = _diContainer
 				.InstantiatePrefabForComponent<DroneItem>(
 				   _dronItemPrefab.gameObject ,
-				   _dronTransform,
-				   new object[] { skin , actions, fractionType });
+				   _dronTransform ,
+				   new object[] { skin , actions , fractionType });
 			return item;
 		}
 

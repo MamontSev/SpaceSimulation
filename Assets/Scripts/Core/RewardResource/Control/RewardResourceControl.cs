@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using SpaceSimulation.Core.GameLoop;
 using SpaceSimulation.Core.GamePrefs;
@@ -12,7 +13,7 @@ using UnityEngine;
 
 namespace SpaceSimulation.Core.RewardResource.Control
 {
-	public class RewardResourceControl:IRewardResourceControl
+	public class RewardResourceControl:IRewardResourceControl ,IDisposable
 	{
 		private readonly IRewardResourceFactory _rewardResourceFactory;
 		private readonly IGameLoopService _gameLoopControl;
@@ -67,6 +68,11 @@ namespace SpaceSimulation.Core.RewardResource.Control
 		public void Init()
 		{
 			CreateRewardResourceItem();
+		}
+
+		public void Dispose()
+		{
+			_gameLoopControl.Unregister(this);
 		}
 	}
 }

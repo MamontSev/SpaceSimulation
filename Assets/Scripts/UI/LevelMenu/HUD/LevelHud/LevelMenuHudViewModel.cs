@@ -9,9 +9,8 @@ using SpaceSimulation.Core.Score;
 using SpaceSimulation.Data.GamePrefs;
 using SpaceSimulation.Events;
 using SpaceSimulation.Events.Signals;
+using SpaceSimulation.GeneralStateMashine;
 using SpaceSimulation.UI.MVVM;
-
-using UnityEngine;
 
 namespace SpaceSimulation.UI.LevelMenu.HUD.LevelHud
 {
@@ -22,13 +21,15 @@ namespace SpaceSimulation.UI.LevelMenu.HUD.LevelHud
 		private readonly IGamePrefsService _gamePrefsService;
 		private readonly IGamePrefsConfig _gamePrefsConfig;
 		private readonly IGameLoopService _gameLoopControl;
+		private readonly GeneralGameStateMachine _generalStateMashine;
 		public LevelMenuHudViewModel
 		(
 			IEventBusService _eventBusService ,
 			IScoreControl _levelScoreControl ,
 			IGamePrefsService _gamePrefsService ,
 			IGamePrefsConfig _gamePrefsConfig,
-			IGameLoopService _gameLoopControl
+			IGameLoopService _gameLoopControl,
+			GeneralGameStateMachine _generalStateMashine
 		)
 		{
 			this._eventBusService = _eventBusService;
@@ -36,6 +37,7 @@ namespace SpaceSimulation.UI.LevelMenu.HUD.LevelHud
 			this._gamePrefsService = _gamePrefsService;
 			this._gamePrefsConfig = _gamePrefsConfig;
 			this._gameLoopControl = _gameLoopControl;
+			this._generalStateMashine = _generalStateMashine;
 			SubscribeEvents();
 		}
 
@@ -93,8 +95,8 @@ namespace SpaceSimulation.UI.LevelMenu.HUD.LevelHud
 			InitSimulationSpeed();
 		}
 
-		private Dictionary<FractionType , IHudSlider> _droneCountDict = new();
-		private Dictionary<FractionType , IHudSlider> _droneSpeedDict = new();
+		private Dictionary<FractionType , IHudSliderInt> _droneCountDict = new();
+		private Dictionary<FractionType , IHudSliderFloat> _droneSpeedDict = new();
 
 
 		private void InitCount()
@@ -102,7 +104,7 @@ namespace SpaceSimulation.UI.LevelMenu.HUD.LevelHud
 			foreach( var item in _droneCountDict )
 			{
 				FractionType fractionType = item.Key;
-				IHudSlider hudSlider = item.Value;
+				IHudSliderInt hudSlider = item.Value;
 				hudSlider.Init
 				  (
 					_gamePrefsConfig.DroneCount.min ,
@@ -110,12 +112,9 @@ namespace SpaceSimulation.UI.LevelMenu.HUD.LevelHud
 					_gamePrefsService.DroneCount(fractionType) ,
 					  value =>
 					  {
-				
-						  int intVal = Mathf.RoundToInt(value);
-						  hudSlider.SetValue(intVal);
 						  if( _gameLoopControl.IsPlaying )
 						  {
-							  _eventBusService.Invoke(new DroneCountSignal(fractionType , intVal));
+							  _eventBusService.Invoke(new DroneCountSignal(fractionType , value));
 						  }
 					  });
 			}
@@ -125,15 +124,14 @@ namespace SpaceSimulation.UI.LevelMenu.HUD.LevelHud
 			foreach( var item in _droneSpeedDict )
 			{
 				FractionType fractionType = item.Key;
-				IHudSlider hudSlider = item.Value;
+				IHudSliderFloat hudSlider = item.Value;
 				hudSlider.Init
 				  (
-					_gamePrefsConfig.DroneCount.min ,
-					_gamePrefsConfig.DroneCount.max ,
-					_gamePrefsService.DroneCount(fractionType) ,
+					_gamePrefsConfig.DroneSpeed.min ,
+					_gamePrefsConfig.DroneSpeed.max ,
+					_gamePrefsService.DroneSpeed(fractionType) ,
 					  value =>
 					  {
-						  hudSlider.SetValue(value);
 						  if( _gameLoopControl.IsPlaying )
 						  {
 							  _eventBusService.Invoke(new DroneSpeedSignal(fractionType , value));
@@ -150,9 +148,13 @@ namespace SpaceSimulation.UI.LevelMenu.HUD.LevelHud
 					1.0f ,
 					  value =>
 					  {
-						  _myView.SimulationSpeed.SetValue(value);
 						  _gameLoopControl.SetSimulationScale(value);
 					  });
+		}
+
+		public void OnRestartPressed()
+		{
+			_generalStateMashine.Enter<RestartSatae>();
 		}
 
 

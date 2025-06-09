@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 331288178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b75b96edaeca7348b5707eb43472dfd, type: 3}
+  m_Script: {fileID: 11500000, guid: 80aba1e6cfda118448f7d0d48b80bb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ValueSlider: {fileID: 1864971430}
@@ -1701,6 +1701,126 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398501284}
   m_CullTransparentMesh: 1
+--- !u!1 &412261484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 412261485}
+  - component: {fileID: 412261487}
+  - component: {fileID: 412261486}
+  - component: {fileID: 412261488}
+  m_Layer: 5
+  m_Name: RestartButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &412261485
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412261484}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 827068283}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 145, y: 154}
+  m_SizeDelta: {x: 128, y: 113.01459}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &412261486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412261484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300070, guid: 1eaee135ce037439d925cee5e41ce026, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &412261487
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412261484}
+  m_CullTransparentMesh: 1
+--- !u!114 &412261488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412261484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 412261486}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &428692714
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,20 +2127,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 613018208}
-        m_TargetAssemblyTypeName: SpaceSimulation.UI.LevelMenu.HUD.LevelHud.HudSlider,
-          Assembly-CSharp
-        m_MethodName: ValueChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &516045297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2254,7 +2361,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 613018206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b75b96edaeca7348b5707eb43472dfd, type: 3}
+  m_Script: {fileID: 11500000, guid: 80aba1e6cfda118448f7d0d48b80bb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ValueSlider: {fileID: 481038179}
@@ -2348,20 +2455,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1636633047}
-        m_TargetAssemblyTypeName: SpaceSimulation.UI.LevelMenu.HUD.LevelHud.HudSlider,
-          Assembly-CSharp
-        m_MethodName: ValueChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &654570449
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,6 +3235,7 @@ RectTransform:
   - {fileID: 1124888393}
   - {fileID: 702221327}
   - {fileID: 613018207}
+  - {fileID: 412261485}
   m_Father: {fileID: 1951754422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3160,6 +3255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd1377c61c18a74fa5e2770f6d20c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RestartButton: {fileID: 412261488}
   ScoreTextRed: {fileID: 1962050645}
   ScoreTextBlue: {fileID: 810913655}
   _countRed: {fileID: 1369592918}
@@ -3745,20 +3841,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1340072995}
-        m_TargetAssemblyTypeName: SpaceSimulation.UI.LevelMenu.HUD.LevelHud.HudSlider,
-          Assembly-CSharp
-        m_MethodName: ValueChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &995997928
 GameObject:
   m_ObjectHideFlags: 0
@@ -4399,20 +4482,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1369592918}
-        m_TargetAssemblyTypeName: SpaceSimulation.UI.LevelMenu.HUD.LevelHud.HudSlider,
-          Assembly-CSharp
-        m_MethodName: ValueChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1124888392
 GameObject:
   m_ObjectHideFlags: 0
@@ -5096,7 +5166,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1340072993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b75b96edaeca7348b5707eb43472dfd, type: 3}
+  m_Script: {fileID: 11500000, guid: 80aba1e6cfda118448f7d0d48b80bb5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ValueSlider: {fileID: 993301712}
@@ -5372,55 +5442,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369592916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b75b96edaeca7348b5707eb43472dfd, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ca01ad7e5b5e4c41a9c728c2914ed1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ValueSlider: {fileID: 1116635528}
   ValueText: {fileID: 797810185}
---- !u!1 &1375210400
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1375210402}
-  - component: {fileID: 1375210401}
-  m_Layer: 0
-  m_Name: GameLoopControl
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1375210401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375210400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dff57ed7204e694eb4509edb6747e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1375210402
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1375210400}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1395879324
 GameObject:
   m_ObjectHideFlags: 0
@@ -5708,7 +5734,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636633045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b75b96edaeca7348b5707eb43472dfd, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ca01ad7e5b5e4c41a9c728c2914ed1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ValueSlider: {fileID: 623908051}
@@ -5835,7 +5861,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1799093321}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6012,20 +6038,7 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 331288180}
-        m_TargetAssemblyTypeName: SpaceSimulation.UI.LevelMenu.HUD.LevelHud.HudSlider,
-          Assembly-CSharp
-        m_MethodName: ValueChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1891806207
 GameObject:
   m_ObjectHideFlags: 0
@@ -6575,12 +6588,11 @@ SceneRoots:
   - {fileID: 1096897860}
   - {fileID: 428692717}
   - {fileID: 2014159278}
+  - {fileID: 1237722166}
+  - {fileID: 1799093323}
+  - {fileID: 1839418248}
   - {fileID: 1088713224}
   - {fileID: 1217173871}
-  - {fileID: 1237722166}
-  - {fileID: 1839418248}
   - {fileID: 987780597}
   - {fileID: 1703767770}
   - {fileID: 1143300233}
-  - {fileID: 1799093323}
-  - {fileID: 1375210402}

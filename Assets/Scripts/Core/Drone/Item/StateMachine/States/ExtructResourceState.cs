@@ -18,9 +18,9 @@ namespace SpaceSimulation.Core.Drone.Item
 		(
 			DronStateMachine _stateMachine ,
 			DroneActions _selActions ,
-			ExtractabelTargetFinder _currTarge,
+			ExtractabelTargetFinder _currTarge ,
 			NavMeshAgent _navMeshAgent
-		) 
+		)
 		{
 			this._stateMachine = _stateMachine;
 			this._selActions = _selActions;
@@ -39,26 +39,33 @@ namespace SpaceSimulation.Core.Drone.Item
 			_selActions.Extruct(true);
 			_currTarget.Target.StartExtruct();
 			_timeRemaining = _currTarget.Target.ExtractDuration;
+			_selActions.OnDeactivate += OnDeacivate;
 		}
 
 		public void Exit()
 		{
 			_selActions.Extruct(false);
+			_selActions.OnDeactivate -= OnDeacivate;
 		}
 
 		public void Update()
 		{
 			_timeRemaining -= Time.deltaTime;
-			if( _timeRemaining <= 0.0f ) 
+			if( _timeRemaining <= 0.0f )
 			{
 				_timeRemaining = 0.0f;
 			}
-			_selActions.SetExtructValue(_timeRemaining, _navMeshAgent.transform.position, _currTarget.Target.Position);
+			_selActions.SetExtructValue(_timeRemaining , _navMeshAgent.transform.position , _currTarget.Target.Position);
 			if( _timeRemaining == 0.0f )
 			{
 				_currTarget.Target.FinishExtruct();
 				_stateMachine.Enter<DronGoToBaseState>();
 			}
+		}
+
+		private void OnDeacivate()
+		{
+			_currTarget.Target.StopExtruct();
 		}
 	}
 

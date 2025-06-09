@@ -9,12 +9,16 @@ using Zenject;
 
 namespace SpaceSimulation.Core.CameraControl
 {
-	public class MoveGamePlayCamera:MonoBehaviour, IGameLoopUpdate
+	public class MoveGamePlayCamera:MonoBehaviour, IGameLoopUpdate ,IDisposable
 	{
 		private IGameLoopService _gameLoopControl;
 		[Inject]
-		private void Construct( IGameLoopService _gameLoopControl )
+		private void Construct
+		( 
+			IGameLoopService _gameLoopControl 
+		)
 		{
+			this._gameLoopControl = _gameLoopControl;
 			_gameLoopControl.Register(this);
 		}
 
@@ -67,6 +71,11 @@ namespace SpaceSimulation.Core.CameraControl
 			{
 				_mousePressed = false;
 			}
+		}
+
+		public void Dispose()
+		{
+			_gameLoopControl.Unregister(this);
 		}
 	}
 }

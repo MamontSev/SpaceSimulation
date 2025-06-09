@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using SpaceSimulation.Core.Drone.Factory;
 using SpaceSimulation.Core.Drone.Item;
 using SpaceSimulation.Core.Fraction;
-using SpaceSimulation.Core.GameLoop;
 using SpaceSimulation.Core.GamePrefs;
 using SpaceSimulation.Core.Spawn;
 using SpaceSimulation.Events;
@@ -12,7 +11,7 @@ using SpaceSimulation.Events.Signals;
 
 namespace SpaceSimulation.Core.Drone.Control
 {
-	public class DroneControl:IDroneControl
+	public class DroneControl:IDroneControl,IDisposable
 	{
 		private readonly IDroneFactory _droneFactory;
 		private readonly ISpawnPointFinder _spawnPointFinder;
@@ -76,6 +75,7 @@ namespace SpaceSimulation.Core.Drone.Control
 				for( int i = 0; i < removeCount; i++ )
 				{
 					DroneItem item = _droneList[fractionType][0];
+					item.DeactivateMe();
 					item.gameObject.SetActive(false);
 					_droneFactory.Return(item);
 					_droneList[fractionType].RemoveAt(0);
@@ -89,9 +89,7 @@ namespace SpaceSimulation.Core.Drone.Control
 			_eventBusService.Subscribe<DroneCountSignal>(OnDroneCountSignal);
 		}
 
-
-
-		public void LateDispose()
+		public void Dispose()
 		{
 			_eventBusService.Unsubscribe<DroneCountSignal>(OnDroneCountSignal);
 		}

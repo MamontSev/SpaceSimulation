@@ -42,7 +42,6 @@ namespace SpaceSimulation.Core.RewardResource.Factory
 
 		public RewardResourceItem Get()
 		{
-			
 			RewardResourceItem item;
 			if( _pool.Count == 0 )
 			{

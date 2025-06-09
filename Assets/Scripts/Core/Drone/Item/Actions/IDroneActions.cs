@@ -15,5 +15,6 @@ namespace SpaceSimulation.Core.Drone.Item.Actions
 		event Action<float, Vector3, Vector3> OnSetExtructValue;
 		event Action<List<Vector3>> OnSetPathToGo;
 		event Action<bool> OnStartAwait;
+		event Action OnDeactivate;
 	}
 }

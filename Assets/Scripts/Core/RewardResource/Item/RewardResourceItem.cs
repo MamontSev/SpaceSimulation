@@ -47,6 +47,11 @@ namespace SpaceSimulation.Core.RewardResource.Item
 			_rewardResourceControl.OnExtructableItemDestroyed(this);
 		}
 
+		public void StopExtruct()
+		{
+			_currState = State.AwaitExstruct;
+		}
+
 		public bool MayExtruct => _currState == State.AwaitExstruct;
 
 		public Vector3 Position => transform.position;

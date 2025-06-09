@@ -126,6 +126,10 @@ namespace SpaceSimulation.Core.Drone.Item
 			_stateMachine.Enter<DronStartAwaitState>();
 			_stateMachine.Enter<DronFindTargetState>();
 		}
+		public void DeactivateMe()
+		{
+			_selActions.Deactivate();
+		}
 
 
 		public void LoopUpdate()

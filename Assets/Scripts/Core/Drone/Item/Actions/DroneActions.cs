@@ -15,6 +15,7 @@ namespace SpaceSimulation.Core.Drone.Item.Actions
 		public event Action<float, Vector3, Vector3> OnSetExtructValue;
 		public event Action<bool> OnGoToBase;
 		public event Action<bool> OnHandOverResources;
+		public event Action OnDeactivate;
 
 		public void StartAwait(bool state)
 		{
@@ -47,6 +48,10 @@ namespace SpaceSimulation.Core.Drone.Item.Actions
 		public void HandOverResources( bool state )
 		{
 			OnHandOverResources?.Invoke(state);
+		}
+		public void Deactivate()
+		{
+			OnDeactivate?.Invoke();
 		}
 
 	}

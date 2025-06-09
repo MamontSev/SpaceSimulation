@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Threading.Tasks;
 
 using SpaceSimulation.Core.Drone.Control;
 using SpaceSimulation.Core.GameLoop;

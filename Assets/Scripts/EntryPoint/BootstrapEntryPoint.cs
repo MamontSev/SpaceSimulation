@@ -29,6 +29,7 @@ namespace SpaceSimulation.EntryPoint
 		{
 			_generalGameStateMachine.Register<MenuState>(_stateFactry.Create<MenuState>());
 			_generalGameStateMachine.Register<GamePlayState>(_stateFactry.Create<GamePlayState>());
+			_generalGameStateMachine.Register<RestartSatae>(_stateFactry.Create<RestartSatae>());
 
 			_generalGameStateMachine.Enter<MenuState>();
 

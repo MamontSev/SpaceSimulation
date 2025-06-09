@@ -4,5 +4,7 @@
 	{
 		void LoadMenu();
 		void LoadGamePlay();
+		void LoadRestart();
 	}
 }
+															  

@@ -2,23 +2,23 @@
 {
 	public interface ILevelMenuHudView
 	{
-		HudSlider CountRed
+		HudSliderInt CountRed
 		{
 			get;
 		}
-		HudSlider CountBlue
+		HudSliderInt CountBlue
 		{
 			get;
 		}
-		HudSlider SpeedRed
+		HudSliderFloat SpeedRed
 		{
 			get;
 		}
-		HudSlider SpeedBlue
+		HudSliderFloat SpeedBlue
 		{
 			get;
 		}
-		HudSlider SimulationSpeed
+		HudSliderFloat SimulationSpeed
 		{
 			get;
 		}

@@ -12,13 +12,12 @@ using Zenject;
 
 namespace SpaceSimulation.Core.GameLoop
 {
-	public class GameLoopService:MonoBehaviour, IGameLoopService
+	public class GameLoopService: IGameLoopService, ITickable
 	{
 		private  IEventBusService _eventBusService;
 		private  ILogService _logService;
 
-		[Inject]
-		private void Construct
+		public GameLoopService
 		( 
 			IEventBusService _eventBusService,
 			ILogService _logService
@@ -85,9 +84,6 @@ namespace SpaceSimulation.Core.GameLoop
 		private List<IGameLoopUpdate> _gameLoopList1 = new();
 		public void Register( IGameLoopUpdate item )
 		{
-			//Debug.Log(item);
-		//	Debug.Log(_gameLoopList1);
-		//	Debug.Log(_gameLoopList1.Contains(item));
 			if( _gameLoopList1.Contains(item) )
 			{
 				_logService.LogError($"GameLoopControl Register - try add again `{item}`");
@@ -105,15 +101,12 @@ namespace SpaceSimulation.Core.GameLoop
 			_gameLoopList1.Remove(item);
 		}
 
-		private void Update()
+
+		public void Tick()
 		{
-			//Debug.Log($"Tick {IsPlaying} {Time.realtimeSinceStartup}");
 			if( IsPlaying == false )
 				return;
 			_gameLoopList1.ForEach(x => x.LoopUpdate());
 		}
-
-
-
 	}
 }

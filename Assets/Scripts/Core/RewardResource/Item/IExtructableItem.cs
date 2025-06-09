@@ -25,5 +25,6 @@ namespace SpaceSimulation.Core.RewardResource.Item
 
 		void FinishExtruct();
 		void StartExtruct();
+		void StopExtruct();
 	}
 }

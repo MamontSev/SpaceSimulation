@@ -22,10 +22,16 @@ namespace SpaceSimulation.UI.LevelMenu.HUD.LevelHud
 		private void Init()
 		{
 			_model.OnInitView(this);
+			RestartButton.onClick.AddListener(_model.OnRestartPressed);
 		}
 
+		private void OnDestroy()
+		{
+			RestartButton.onClick.RemoveAllListeners();
+		}
 
-
+		[SerializeField]
+		private Button RestartButton;
 
 
 		[Header("ScoreText")]
@@ -40,24 +46,24 @@ namespace SpaceSimulation.UI.LevelMenu.HUD.LevelHud
 		}
 
 		[SerializeField]
-		private HudSlider _countRed;
-		public HudSlider CountRed => _countRed;
+		private HudSliderInt _countRed;
+		public HudSliderInt CountRed => _countRed;
 
 		[SerializeField]
-		private HudSlider _countBlue;
-		public HudSlider CountBlue => _countBlue;
+		private HudSliderInt _countBlue;
+		public HudSliderInt CountBlue => _countBlue;
 
 		[SerializeField]
-		private HudSlider _speedRed;
-		public HudSlider SpeedRed => _speedRed;
+		private HudSliderFloat _speedRed;
+		public HudSliderFloat SpeedRed => _speedRed;
 
 		[SerializeField]
-		private HudSlider _speedBlue;
-		public HudSlider SpeedBlue => _speedBlue;
+		private HudSliderFloat _speedBlue;
+		public HudSliderFloat SpeedBlue => _speedBlue;
 
 		[SerializeField]
-		private HudSlider _simulationSpeed;
-		public HudSlider SimulationSpeed => _simulationSpeed;
+		private HudSliderFloat _simulationSpeed;
+		public HudSliderFloat SimulationSpeed => _simulationSpeed;
 
 
 

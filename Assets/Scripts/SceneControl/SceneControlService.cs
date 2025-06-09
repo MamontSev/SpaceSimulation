@@ -17,6 +17,10 @@ namespace SpaceSimulation.SceneControl
 		{
 			LoadScene("Menu");
 		}
+		public void LoadRestart()
+		{
+			LoadScene("Restart");
+		}
 
 		private void LoadScene( string name )
 		{

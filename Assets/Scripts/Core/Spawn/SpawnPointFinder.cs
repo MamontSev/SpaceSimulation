@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+using Zenject;
+
 namespace SpaceSimulation.Core.Spawn
 {
 	public class SpawnPointFinder:MonoBehaviour, ISpawnPointFinder
@@ -28,5 +30,6 @@ namespace SpaceSimulation.Core.Spawn
 			}
 			return randomPos + _plane.transform.up * 0.5f;
 		}
+
 	}
 }

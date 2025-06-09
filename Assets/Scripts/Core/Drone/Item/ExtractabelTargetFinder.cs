@@ -24,15 +24,18 @@ namespace SpaceSimulation.Core.Drone.Item
 					newTraget = item;
 				}
 			}
-			if( newTraget != _target )
-			{
-				_target = newTraget;
-				callback?.Invoke(true);
-			}
-			else
+			if( newTraget == null )
 			{
 				callback?.Invoke(false);
+				return;
 			}
+			if( newTraget == _target )
+			{
+				callback?.Invoke(false);
+				return;
+			}
+			_target = newTraget;
+			callback?.Invoke(true);
 		}
 		public void ResetTarget()
 		{

@@ -10,8 +10,6 @@ using SpaceSimulation.Core.Score;
 using SpaceSimulation.Core.Spawn;
 using SpaceSimulation.UI.LevelMenu.HUD;
 
-using UnityEngine;
-
 using Zenject;
 
 namespace SpaceSimulation.Installer
@@ -21,7 +19,7 @@ namespace SpaceSimulation.Installer
 		public override void InstallBindings()
 		{
 			BindLevelScoreControl();
-			BindLevelStateControl();
+			BindGameLoopService();
 			BindLevelMenuHudFactory();
 			BindRewardResourceFactory();
 			BindRewardResourceControl();
@@ -37,14 +35,17 @@ namespace SpaceSimulation.Installer
 
 		private void BindLevelScoreControl()
 		{
-			Container.Bind<IScoreControl>().To<ScoreControl>().AsSingle().NonLazy();
+			Container
+			.Bind<IScoreControl>()
+			.To<ScoreControl>()
+			.AsSingle()
+			.NonLazy();
+
 		}
-		private void BindLevelStateControl()
+		private void BindGameLoopService()
 		{
 			Container
-			.Bind<IGameLoopService>()
-			.To<GameLoopService>()
-			.FromComponentInHierarchy()
+			.BindInterfacesAndSelfTo<GameLoopService>()
 			.AsSingle()
 			.NonLazy();
 		}
@@ -71,8 +72,7 @@ namespace SpaceSimulation.Installer
 		private void BindRewardResourceControl()
 		{
 			Container
-			.Bind<IRewardResourceControl>()
-			.To<RewardResourceControl>()
+			.BindInterfacesAndSelfTo<RewardResourceControl>()
 			.AsSingle()
 			.NonLazy();
 		}
@@ -101,7 +101,7 @@ namespace SpaceSimulation.Installer
 		private void BindMoveGamePlayCamera()
 		{
 			Container
-			.Bind<MoveGamePlayCamera>()
+			.BindInterfacesAndSelfTo<MoveGamePlayCamera>()
 			.FromComponentInHierarchy()
 			.AsSingle()
 			.NonLazy();
@@ -137,7 +137,10 @@ namespace SpaceSimulation.Installer
 
 		private void BindDroneControl()
 		{
-			Container.Bind<IDroneControl>().To<DroneControl>().AsSingle().NonLazy();
+			Container
+			.BindInterfacesAndSelfTo<DroneControl>()
+			.AsSingle()
+			.NonLazy();
 
 
 		}

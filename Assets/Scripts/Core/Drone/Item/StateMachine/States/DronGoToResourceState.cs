@@ -65,18 +65,18 @@ namespace SpaceSimulation.Core.Drone.Item
 
 		public void Update()
 		{
-			if( _currTarget == null || _currTarget.Target.MayExtruct == false )
+			if( _currTarget.Target == null || _currTarget.Target.MayExtruct == false )
 			{
 				_stateMachine.Enter<DronFindTargetState>();
 				return;
 			}
-			if( Time.time > _timeLastRepath + 0.3f )
+			if( Time.time > _timeLastRepath + 0.2f )
 			{
 				_currTarget.Find(
 				_navMeshAgent.transform.position ,
 				_rewardResourceControl.ExtructableItemsList ,
-				 complete => { });
-				_navMeshAgent.destination = _currTarget.Target.Position;
+				 complete => { _navMeshAgent.destination = _currTarget.Target.Position; });
+				
 			}
 			_navMeshAgent.speed = _gamePrefsService.DroneSpeed(_fractionType);
 			DrawPath();
@@ -85,6 +85,11 @@ namespace SpaceSimulation.Core.Drone.Item
 
 		private void CheckComplete()
 		{
+			if( _currTarget.Target == null || _currTarget.Target.MayExtruct == false )
+			{
+				_stateMachine.Enter<DronFindTargetState>();
+				return;
+			}
 			float dist = Vector3.Distance(_navMeshAgent.transform.position , _currTarget.Target.Position);
 			if( dist < ExtructDistance )
 			{
